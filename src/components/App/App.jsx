@@ -1,17 +1,25 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import { getContacts } from 'redux/selectors';
 import { GlobalStyle } from 'CreateGlobalStyle';
-
+import { fetchContacts } from 'redux/operations';
 import { ContainerWrap } from 'components/Section/Section';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactsList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Fiter/Filter';
 import { Title } from './App.styled';
+import { getError, getIsLoading } from 'redux/selectors';
 
 export const App = () => {
   // const contacts = useSelector(state => state.contacts);
+  const dispatch = useDispatch();
+  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
   const { items } = useSelector(getContacts);
 
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
   return (
     <div
       style={{
@@ -30,6 +38,7 @@ export const App = () => {
       </ContainerWrap>
       <ContainerWrap title="Contacts">
         <Filter />
+        {isLoading && !error && <b>Request in progress...</b>}
         {items.length > 0 && <ContactsList />}
       </ContainerWrap>
     </div>

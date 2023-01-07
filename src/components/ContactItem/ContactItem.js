@@ -20,3 +20,4 @@ ContactItem.propTypes={
     })
   ),
 };
+//JSON.stringify(items, null, 2)}</p>

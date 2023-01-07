@@ -2,9 +2,10 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 //import { deleteContact } from 'redux/actions';
-import { deleteContact } from 'redux/contactsSlice';
+import { deleteContact } from 'redux/operations';
 import { getContacts, getFilter } from 'redux/selectors';
 import { ContactItem } from 'components/ContactItem/ContactItem';
+
 import {
   ContactList,
   ContactListItem,
@@ -12,6 +13,7 @@ import {
 } from './ContactList.styled';
 
 const getVisibleContacts = (items, filter) => {
+  console.log('getVisibleContacts', items);
   const normalizedFilter = filter.toLowerCase();
   return items.filter(contact =>
     contact.name.toLowerCase().includes(normalizedFilter)
@@ -22,7 +24,7 @@ export function ContactsList() {
   const dispatch = useDispatch();
 
   const { items } = useSelector(getContacts);
-
+  console.log('ContactsList()', items);
   // const contacts = useSelector(state => state.contacts);
   const handleDeleteContact = contactId => dispatch(deleteContact(contactId));
   // const filter = useSelector(state => state.filter);
