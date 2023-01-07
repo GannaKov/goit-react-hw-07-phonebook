@@ -12,7 +12,7 @@ import {
 } from 'components/ContactForm/ContactForm.styled';
 
 export const ContactForm = () => {
-  const { contacts } = useSelector(getContacts);
+  const { items } = useSelector(getContacts);
   //const value=useSelector(state=>state.myValue) - from lesson
   const dispatch = useDispatch();
 
@@ -36,7 +36,7 @@ export const ContactForm = () => {
   const handleSubmit = evt => {
     evt.preventDefault();
 
-    if (contacts.length > 0 && contacts.find(item => item.name === name)) {
+    if (items.length > 0 && items.find(item => item.name === name)) {
       alert(`${name} is already in contacts `);
       reset();
       return;

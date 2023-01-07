@@ -10,7 +10,7 @@ import { Title } from './App.styled';
 
 export const App = () => {
   // const contacts = useSelector(state => state.contacts);
-  const { contacts } = useSelector(getContacts);
+  const { items } = useSelector(getContacts);
 
   return (
     <div
@@ -30,8 +30,17 @@ export const App = () => {
       </ContainerWrap>
       <ContainerWrap title="Contacts">
         <Filter />
-        {contacts.length > 0 && <ContactsList />}
+        {items.length > 0 && <ContactsList />}
       </ContainerWrap>
     </div>
   );
 };
+//https://63b96d504482143a3f10dee5.mockapi.io/contacts
+// {
+//   contacts: {
+//     items: [],
+//     isLoading: false,
+//     error: null
+//   },
+//   filter: ""
+// }

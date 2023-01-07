@@ -11,9 +11,9 @@ import {
   FiltrSubmitBtn,
 } from './ContactList.styled';
 
-const getVisibleContacts = (contacts, filter) => {
+const getVisibleContacts = (items, filter) => {
   const normalizedFilter = filter.toLowerCase();
-  return contacts.filter(contact =>
+  return items.filter(contact =>
     contact.name.toLowerCase().includes(normalizedFilter)
   );
 };
@@ -21,13 +21,13 @@ const getVisibleContacts = (contacts, filter) => {
 export function ContactsList() {
   const dispatch = useDispatch();
 
-  const { contacts } = useSelector(getContacts);
+  const { items } = useSelector(getContacts);
 
   // const contacts = useSelector(state => state.contacts);
   const handleDeleteContact = contactId => dispatch(deleteContact(contactId));
   // const filter = useSelector(state => state.filter);
   const filter = useSelector(getFilter);
-  const visibleContacts = getVisibleContacts(contacts, filter);
+  const visibleContacts = getVisibleContacts(items, filter);
 
   return (
     <ContactList>
