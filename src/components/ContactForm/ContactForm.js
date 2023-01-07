@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 //import { addContact } from 'redux/actions';
@@ -41,8 +42,8 @@ export const ContactForm = () => {
       reset();
       return;
     }
-
-    dispatch(addContact(name, number));
+    const id = nanoid();
+    dispatch(addContact({ id, name, number }));
     reset();
   };
   const reset = () => {
