@@ -12,12 +12,11 @@ export function ContactItem({ contact: { name, number } }) {
   );
 }
 
-ContactItem.propTypes={
+ContactItem.propTypes = {
   contacts: PropTypes.arrayOf(
-    PropTypes.shape({  
+    PropTypes.shape({
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
     })
   ),
 };
-//JSON.stringify(items, null, 2)}</p>

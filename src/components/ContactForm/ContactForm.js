@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-// import { nanoid } from 'nanoid';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-//import { addContact } from 'redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/operations';
 import { selectContacts } from 'redux/selectors';
 import {
@@ -14,7 +11,6 @@ import {
 
 export const ContactForm = () => {
   const items = useSelector(selectContacts);
-  //const value=useSelector(state=>state.myValue) - from lesson
   const dispatch = useDispatch();
 
   const [name, setName] = useState('');
@@ -22,7 +18,6 @@ export const ContactForm = () => {
 
   const handleChange = evt => {
     const { name, value } = evt.target;
-
     switch (name) {
       case 'name':
         setName(value);
@@ -34,23 +29,25 @@ export const ContactForm = () => {
         return;
     }
   };
+
   const handleSubmit = evt => {
     evt.preventDefault();
-
+    // const contact = { name, number };
+    // dispatch(addStoreContacts(contact));
     if (items.length > 0 && items.find(item => item.name === name)) {
       alert(`${name} is already in contacts `);
       reset();
       return;
     }
-    // const id = nanoid();
-
     dispatch(addContact({ name, phone }));
     reset();
   };
+
   const reset = () => {
     setName('');
     setPhone('');
   };
+
   return (
     <Form onSubmit={handleSubmit}>
       <FormLabel>

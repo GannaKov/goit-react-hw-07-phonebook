@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { FiltrLabel, FiltrInput } from './Filter.styled';
-// import { putFilter } from 'redux/actions';
 import { putFilter } from 'redux/filterSlice';
+import { FiltrLabel, FiltrInput } from './Filter.styled';
 
 export const Filter = () => {
   const [filter, setFilter] = useState('');
@@ -12,6 +11,7 @@ export const Filter = () => {
     setFilter(e.currentTarget.value);
     dispatch(putFilter(e.currentTarget.value));
   };
+
   return (
     <FiltrLabel>
       Find contacts by name
