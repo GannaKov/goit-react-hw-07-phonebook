@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { getContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/selectors';
 import { GlobalStyle } from 'CreateGlobalStyle';
 import { fetchContacts } from 'redux/operations';
 import { ContainerWrap } from 'components/Section/Section';
@@ -8,14 +8,14 @@ import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactsList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Fiter/Filter';
 import { Title } from './App.styled';
-import { getError, getIsLoading } from 'redux/selectors';
+import { selectError, selectIsLoading } from 'redux/selectors';
 
 export const App = () => {
   // const contacts = useSelector(state => state.contacts);
   const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
-  const { items } = useSelector(getContacts);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+  const items = useSelector(selectContacts);
 
   useEffect(() => {
     dispatch(fetchContacts());

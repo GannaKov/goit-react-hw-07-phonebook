@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 //import { addContact } from 'redux/actions';
 import { addContact } from 'redux/operations';
-import { getContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/selectors';
 import {
   Form,
   FormInput,
@@ -13,7 +13,7 @@ import {
 } from 'components/ContactForm/ContactForm.styled';
 
 export const ContactForm = () => {
-  const { items } = useSelector(getContacts);
+  const items = useSelector(selectContacts);
   //const value=useSelector(state=>state.myValue) - from lesson
   const dispatch = useDispatch();
 
