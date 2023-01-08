@@ -36,14 +36,14 @@ export const ContactForm = () => {
   };
   const handleSubmit = evt => {
     evt.preventDefault();
-    console.log('in handleSubmit');
+
     if (items.length > 0 && items.find(item => item.name === name)) {
       alert(`${name} is already in contacts `);
       reset();
       return;
     }
     // const id = nanoid();
-    console.log('in handleSubmit', name, phone);
+
     dispatch(addContact({ name, phone }));
     reset();
   };
