@@ -11,9 +11,9 @@ import {
 
 export function ContactsList() {
   const dispatch = useDispatch();
-  const handleDeleteContact = contactId => {
-    dispatch(deleteContact(contactId));
-  };
+  // const handleDeleteContact = contactId => {
+  //   dispatch(deleteContact(contactId));
+  // };
 
   const visibleContacts = useSelector(selectVisibleContacts);
 
@@ -24,7 +24,8 @@ export function ContactsList() {
           <ContactItem contact={contact} />
           <FiltrSubmitBtn
             type="button"
-            onClick={() => handleDeleteContact(contact.id)}
+            // onClick={() => handleDeleteContact(contact.id)}
+            onClick={() => dispatch(deleteContact(contact.id))}
           >
             Удалить
           </FiltrSubmitBtn>
